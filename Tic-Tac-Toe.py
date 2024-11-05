@@ -1,5 +1,5 @@
 import random
-user_mark = input ("'x' or 'o' : ")
+user_mark = input ("'x' or 'o' or 'q': ")
 if user_mark == 'x': pc_mark = 'o'
 else: pc_mark = 'x'    
 GameRunning = True
@@ -9,7 +9,12 @@ board =[
     ['-','-','-'],
     ['-','-','-'] 
 ]
-
+def quit():
+    global GameRunning 
+    if user_mark == 'q':
+        print("thanks for playing.")
+        GameRunning = False
+        
 
 def print_board(board): 
     for row in board :
@@ -42,7 +47,6 @@ def pc_choose_def():
         if board[pc_row][pc_splot] == '-':
             board[pc_row][pc_splot] = pc_mark
             break
-
 def HorezentalWinning():
     global winner
     if board[0][0] ==board[0][1] == board[0][2] and board[0][0] != '-':
@@ -85,11 +89,16 @@ def TieNOWin():
         return True
     return False
 while GameRunning :
+    quit()
+    if not GameRunning :
+        break
+    print_board(board)
     user_choose_def()
     pc_choose_def()
-    print_board(board)
+
     if RowWinnning() or DiagWinning() or   HorezentalWinning() :
         print(f"The winner is {winner}")
         GameRunning = False
     elif TieNOWin():
         break
+    
