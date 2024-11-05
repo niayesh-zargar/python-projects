@@ -1,7 +1,7 @@
 # player and pc 
 # input from player
 # pc randomly choose => random 
-# 3 times repit 
+# 3 times repeat 
 # winner
 import random
 user_point = int('0')
