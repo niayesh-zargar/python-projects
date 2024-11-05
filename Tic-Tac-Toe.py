@@ -1,7 +1,18 @@
 import random
-user_mark = input ("'x' or 'o' or 'q': ")
-if user_mark == 'x': pc_mark = 'o'
-else: pc_mark = 'x'    
+
+while True:
+    user_mark = input ("'x' or 'o' or 'q': ")
+    if user_mark in ['x' , 'o'  ,'q']:
+        if user_mark == 'x': pc_mark = 'o'
+        elif user_mark == 'q':
+            GameRunning = False 
+            break
+        else: pc_mark = 'x' 
+        GameRunning = True
+        break
+    else: 
+        print('invalid choose')
+        
 GameRunning = True
 winner = None
 board =[
@@ -94,11 +105,20 @@ while GameRunning :
         break
     print_board(board)
     user_choose_def()
-    pc_choose_def()
-
+    
     if RowWinnning() or DiagWinning() or   HorezentalWinning() :
+        print_board(board)
+        print(f"The winner is {winner}")
+        GameRunning = False
+    elif TieNOWin():
+        break
+    pc_choose_def()
+    
+    if RowWinnning() or DiagWinning() or   HorezentalWinning() :
+        print_board(board)
         print(f"The winner is {winner}")
         GameRunning = False
     elif TieNOWin():
         break
     
+
