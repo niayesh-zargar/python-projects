@@ -1,7 +1,7 @@
 import random
 
 while True:
-    user_mark = input ("'x' or 'o' or 'q': ")
+    user_mark = input ("'x' or 'o' or 'q': ").lower()
     if user_mark in ['x' , 'o'  ,'q']:
         if user_mark == 'x': pc_mark = 'o'
         elif user_mark == 'q':
